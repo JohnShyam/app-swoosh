@@ -9,9 +9,16 @@
 import UIKit
 
 class LeagueVC: UIViewController {
+    
+    var player: Player!
 
+    @IBOutlet var nextBtn: BorderButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        player = Player()
 
         // Do any additional setup after loading the view.
     }
@@ -20,6 +27,28 @@ class LeagueVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func mensButtonPressed(_ sender: Any) {
+        selectLeague(leagueType: "mens")
+    }
+    
+    @IBAction func womensBtnPressed(_ sender: Any) {
+        selectLeague(leagueType: "womens")
+    }
+    
+    @IBAction func coedBtnPressed(_ sender: Any) {
+        selectLeague(leagueType: "co-ed")
+    }
+    
+    func selectLeague(leagueType: String){
+        player.desiredLeague = leagueType
+        nextBtn.isEnabled = true
+    }
+    
+    
+    
+    
+    
     
     @IBAction func nextBtnPressed(_ sender: Any) {
         performSegue(withIdentifier: "skillVCSegue", sender: self)
